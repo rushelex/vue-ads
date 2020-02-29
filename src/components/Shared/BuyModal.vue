@@ -1,38 +1,28 @@
 <template lang="pug">
-    v-dialog(
-        v-model="modal"
-        width="500px"
-    )
-        template(
-            v-slot:activator="{ on }"
-        )
-            v-btn(
-                color="primary"
-                v-on="on"
-            ) Buy
+    v-dialog( v-model="modal" width="500px" )
+        template( v-slot:activator="{ on }" )
+            v-btn.ml-2( color="primary" v-on="on" ) Buy
 
         v-card
             v-card-title.pt-10.pb-10
-                h1.text--primary Do you want to buy it?
+                h1.headline Do you want to buy it?
             v-card-text
-                v-form(
-                    ref="form"
-                )
+                v-form( ref="form" )
                     v-text-field(
-                        label="You name",
-                        name="name",
-                        type="text",
+                        label="You name"
+                        name="name"
+                        type="text"
                         color="purple"
-                        v-model="name",
-                        :rules="nameRules",
+                        v-model="name"
+                        :rules="nameRules"
                     )
                     v-text-field(
-                        label="You phone",
-                        name="phone",
-                        type="text",
-                        color="purple",
-                        v-model="phone",
-                        :rules="phoneRules",
+                        label="You phone"
+                        name="phone"
+                        type="text"
+                        color="purple"
+                        v-model="phone"
+                        :rules="phoneRules"
                         v-mask="'+7 (###) ###-##-##'"
                     )
             v-card-actions

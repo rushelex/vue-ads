@@ -1,15 +1,11 @@
 <template lang="pug">
     v-app#inspire
-        v-navigation-drawer(
-            app,
-            temporary,
-            v-model="drawer"
-        )
+        v-navigation-drawer( app temporary v-model="drawer" )
             v-list( shaped )
-                v-list-item-group( color="purple" )
+                v-list-item-group( color="primary" )
                     v-list-item(
-                        v-for="link in links",
-                        :key="link.title",
+                        v-for="link in links"
+                        :key="link.title"
                         :to="link.url"
                     )
                         v-list-item-icon
@@ -23,37 +19,53 @@
                         v-list-item-icon
                             v-icon mdi-logout-variant
                         v-list-item-content
-                            v-list-item-title(
-                                v-text="'Logout'"
-                            )
+                            v-list-item-title( v-text="'Logout'" )
 
-        v-app-bar(
-            app,
-            flat,
-            color="white"
-        )
+        //- v-app-bar( app flat )
+        //-     v-app-bar-nav-icon.hidden-md-and-up(
+        //-         @click="drawer = !drawer"
+        //-     )
+        //-     v-toolbar-title
+        //-         router-link.pointer( to="/" tag="span" ) Ad application
+        //-     v-spacer
+        //-     v-btn.hidden-sm-and-down.ma-2(
+        //-         color="primary"
+        //-         text
+        //-         v-for="link in links"
+        //-         :key="link.title"
+        //-         :to="link.url"
+        //-     )
+        //-         v-icon( left ) {{ link.icon }}
+        //-         | {{ link.title }}
+        //-     v-btn.hidden-sm-and-down.ma-2(
+        //-         color="primary"
+        //-         text
+        //-         @click="onLogout"
+        //-         v-if="isUserLoggedIn"
+        //-     )
+        //-         v-icon( left ) mdi-logout-variant
+        //-         | Logout
+
+        v-toolbar( flat )
             v-app-bar-nav-icon.hidden-md-and-up(
                 @click="drawer = !drawer"
             )
             v-toolbar-title
-                router-link.pointer(
-                    to="/",
-                    tag="span"
-                ) Ad application
+                router-link.pointer( to="/" tag="span" ) Ad application
             v-spacer
             v-btn.hidden-sm-and-down.ma-2(
-                color="purple",
-                text,
-                v-for="link in links",
-                :key="link.title",
+                color="primary"
+                text
+                v-for="link in links"
+                :key="link.title"
                 :to="link.url"
             )
                 v-icon( left ) {{ link.icon }}
                 | {{ link.title }}
             v-btn.hidden-sm-and-down.ma-2(
-                color="purple",
-                text,
-                @click="onLogout",
+                color="primary"
+                text
+                @click="onLogout"
                 v-if="isUserLoggedIn"
             )
                 v-icon( left ) mdi-logout-variant
@@ -61,23 +73,19 @@
 
 
         v-content
-            router-view
+            transition( name="fade" mode="out-in" )
+                router-view
 
-        transition(
-            name="fade"
-        )
-            v-snackbar(
-                v-if="error"
-                color="error"
-                :timeout="5000"
-                @input="closeError"
-                :value="true"
-            ) {{ error }}
-                v-btn(
-                    dark
-                    text
-                    @click.native="closeError"
-                ) Close
+        div
+            transition( name="fade" )
+                v-snackbar(
+                    v-if="error"
+                    color="error"
+                    :timeout="5000"
+                    @input="closeError"
+                    :value="true"
+                ) {{ error }}
+                    v-btn( dark text @click.native="closeError" ) Close
 </template>
 
 <script>

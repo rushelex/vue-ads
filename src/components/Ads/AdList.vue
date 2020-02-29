@@ -2,9 +2,7 @@
     v-container
         v-row( v-if="!loading && myAds.length !== 0")
 
-            v-col(
-                cols="12"
-            )
+            v-col( cols="12" )
                 h1.text--secondary.mb-3 My ad's
             v-row
                 v-col(
@@ -16,54 +14,32 @@
                     :key="ad.id"
                 )
                     v-card.elevation-10.mb-5
-                        v-img(
-                            :src="ad.imageSrc"
-                            aspect-ratio="2"
-                        )
-                        v-card-title.headline(
-                            v-text="ad.title"
-                        )
-                        v-card-subtitle(
-                            v-text="ad.description"
-                        )
+                        v-img( :src="ad.imageSrc" aspect-ratio="2" )
+                        v-card-title.headline( v-text="ad.title" )
+                        v-card-subtitle( v-text="ad.description" )
                         v-card-actions
                             v-spacer
-                            v-btn.info.ma-3(
-                                :to="'/ad/' + ad.id"
-                            ) Open
+                            v-btn.info.ma-3( :to="'/ad/' + ad.id" ) Open
 
         v-row( v-else-if="!loading && myAds.length === 0")
-            v-col.offset-sm-3(
-                cols="12",
-                xs="12",
-                sm="6"
-            )
+            v-col.offset-sm-3( cols="12" xs="12" sm="6" )
                 h1.text-center You have no ad's
 
         v-row( v-else )
+            v-col( cols="12" )
+                v-skeleton-loader.mb-3( type="heading" )
             v-col(
                 cols="12"
-            )
-                v-skeleton-loader.mb-3(
-                    type="heading"
-                )
-            v-col(
-                cols="12"
-                sm="6",
-                md="4",
-                lg="3",
+                sm="6"
+                md="4"
+                lg="3"
                 v-for="i in 8"
+                :key="i"
             )
                 v-card.elevation-10.mb-5
-                    v-skeleton-loader(
-                        type="image"
-                    )
-                    v-skeleton-loader(
-                        type="article"
-                    )
-                    v-skeleton-loader(
-                        type="actions"
-                    )
+                    v-skeleton-loader( type="image" )
+                    v-skeleton-loader( type="article" )
+                    v-skeleton-loader( type="actions" )
 </template>
 
 <script>

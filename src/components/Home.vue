@@ -2,14 +2,11 @@
     div(v-if="!loading" )
         v-container( fluid )
             v-row
-                v-col.pa-0(
-                    cols="12",
-                    xs="12"
-                )
+                v-col.pa-0( cols="12" xs="12" )
                     v-carousel
                         v-carousel-item(
                             v-for="ad in promoAds",
-                            :key="ad.id",
+                            :key="ad.id"
                             :src="ad.imageSrc"
                         )
                             .car-link
@@ -19,18 +16,16 @@
         v-container
             v-row
                 v-col(
-                    cols="12",
-                    sm="6",
-                    md="4",
+                    cols="12"
+                    sm="6"
+                    md="4"
                     lg="3"
-                    v-for="ad in ads",
+                    v-for="ad in ads"
                     :key="ad.id"
                 )
-                    v-card.mx-auto(
-                        max-width="400"
-                    )
+                    v-card.mx-auto( max-width="400" )
                         v-img.white--text.align-end(
-                            height="200px",
+                            height="200px"
                             :src="ad.imageSrc"
                         )
                         v-card-title {{ ad.title }}
@@ -39,94 +34,30 @@
                         v-card-actions
                             v-spacer
                             v-btn(
-                                text,
+                                text
                                 :to="'/ad/' + ad.id"
                             ) Open
-                            BuyModal(:ad="ad")
+                            BuyModal( :ad="ad" )
     div( v-else )
         v-container( fluid )
             v-row
-                v-col.pa-0(
-                    cols="12",
-                    xs="12"
-                )
+                v-col.pa-0( cols="12" xs="12" )
                     v-skeleton-loader(
                         type="image, actions"
                     )
         v-container
             v-row
                 v-col(
-                    cols="12",
-                    sm="6",
-                    md="4",
+                    cols="12"
+                    sm="6"
+                    md="4"
                     lg="3"
+                    v-for="card in 4" :key="card.key"
                 )
-                    v-card.mx-auto(
-                        max-width="400"
-                    )
-                        v-skeleton-loader(
-                            type="image"
-                        )
-                        v-skeleton-loader(
-                            type="article"
-                        )
-                        v-skeleton-loader(
-                            type="actions"
-                        )
-                v-col(
-                    cols="12",
-                    sm="6",
-                    md="4",
-                    lg="3"
-                )
-                    v-card.mx-auto(
-                        max-width="400"
-                    )
-                        v-skeleton-loader(
-                            type="image"
-                        )
-                        v-skeleton-loader(
-                            type="article"
-                        )
-                        v-skeleton-loader(
-                            type="actions"
-                        )
-                v-col(
-                    cols="12",
-                    sm="6",
-                    md="4",
-                    lg="3"
-                )
-                    v-card.mx-auto(
-                        max-width="400"
-                    )
-                        v-skeleton-loader(
-                            type="image"
-                        )
-                        v-skeleton-loader(
-                            type="article"
-                        )
-                        v-skeleton-loader(
-                            type="actions"
-                        )
-                v-col(
-                    cols="12",
-                    sm="6",
-                    md="4",
-                    lg="3"
-                )
-                    v-card.mx-auto(
-                        max-width="400"
-                    )
-                        v-skeleton-loader(
-                            type="image"
-                        )
-                        v-skeleton-loader(
-                            type="article"
-                        )
-                        v-skeleton-loader(
-                            type="actions"
-                        )
+                    v-card.mx-auto( max-width="400" )
+                        v-skeleton-loader( type="image" )
+                        v-skeleton-loader( type="article" )
+                        v-skeleton-loader( type="actions" )
 
 </template>
 

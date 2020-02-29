@@ -1,55 +1,34 @@
 <template lang="pug">
-    v-dialog(
-        v-model="modal"
-        width="400px"
-    )
-        template(
-            v-slot:activator="{ on }"
-        )
-            v-btn(
-                color="orange"
-                text
-                v-on="on"
-            )
-                v-icon(
-                    left
-                ) mdi-pencil
+    v-dialog( v-model="modal" width="400px" )
+        template( v-slot:activator="{ on }" )
+            v-btn( color="orange" text v-on="on" )
+                v-icon( left ) mdi-pencil
                 | Edit
 
         v-card
             v-card-title.pt-10.pb-10
-                h1.text--primary Edit ad
+                h1.headline Edit ad
             v-card-text
-                v-form(
-                    ref="form"
-                )
+                v-form( ref="form" )
                     v-text-field(
-                        label="Title",
-                        name="title",
-                        type="text",
-                        color="purple"
+                        label="Title"
+                        name="title"
+                        type="text"
+                        color="primary"
                         v-model="editedTitle"
                     )
                     v-textarea(
-                        label="Description",
-                        name="description",
-                        type="text",
-                        color="purple",
+                        label="Description"
+                        name="description"
+                        type="text"
+                        color="primary"
                         v-model="editedDescription"
                         multi-line
                     )
             v-card-actions
                 v-spacer
-                v-btn(
-                    text
-                    color="grey"
-                    @click="onCancel"
-                ) Cancel
-                v-btn(
-                    text
-                    color="success"
-                    @click="onSubmit"
-                ) Submit
+                v-btn( text color="grey" @click="onCancel" ) Cancel
+                v-btn( text color="success" @click="onSubmit" ) Submit
 </template>
 
 <script>

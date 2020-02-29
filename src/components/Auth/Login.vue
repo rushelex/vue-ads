@@ -1,54 +1,43 @@
 <template lang="pug">
     v-container.fill-height( fluid )
-        v-row.ma-auto(
-            align="center",
-            justify="center"
-        )
-            v-col(
-                cols="12",
-                sm="8",
-                md="4"
-            )
+        v-row.ma-auto( align="center" justify="center" )
+            v-col( cols="12" sm="8" md="4" )
                 v-card.elevation-12
-                    v-toolbar(
-                        color="purple",
-                        dark,
-                        flat
-                    )
+                    v-toolbar( color="primary" dark flat )
                         v-toolbar-title Login form
                     v-card-text
                         v-form(
-                            ref="form",
-                            v-model="valid",
+                            ref="form"
+                            v-model="valid"
                             validation
                         )
                             v-text-field(
-                                label="E-mail",
-                                name="email",
-                                type="email",
-                                prepend-icon="mdi-account",
-                                color="purple",
-                                v-model="email",
+                                label="E-mail"
+                                name="email"
+                                type="email"
+                                prepend-icon="mdi-account"
+                                color="primary"
+                                v-model="email"
                                 :rules="emailRules"
                             )
                             v-text-field(
-                                label="Password",
-                                name="password",
-                                type="password",
-                                prepend-icon="mdi-lock",
-                                color="purple",
-                                v-model="password",
-                                :rules="passwordRules",
-                                :counter="6",
+                                label="Password"
+                                name="password"
+                                type="password"
+                                prepend-icon="mdi-lock"
+                                color="primary"
+                                v-model="password"
+                                :rules="passwordRules"
+                                :counter="6"
                                 required
                             )
                     v-card-actions
                         v-spacer
                         v-btn.pl-6.pr-6(
-                            color="purple",
-                            style="color: #ffffff;",
-                            @click="onSubmit",
-                            :loading="loading",
+                            color="primary"
+                            style="color: #ffffff;"
+                            @click="onSubmit"
+                            :loading="loading"
                             :disabled="!valid || loading"
                         ) Login
 </template>

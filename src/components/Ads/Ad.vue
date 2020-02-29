@@ -1,12 +1,8 @@
 <template lang="pug">
     v-container
         v-row
-            v-col(
-                cols="12"
-            )
-                v-card(
-                    v-if="!loading"
-                )
+            v-col( cols="12" )
+                v-card( v-if="!loading" )
                     v-img(
                         :src="ad.imageSrc"
                         :aspect-ratio="16/9"
@@ -15,17 +11,10 @@
                     v-card-subtitle {{ ad.description }}
                     v-card-actions
                         v-spacer
-                        addEditAdModal(
-                            :ad="ad"
-                            v-if="isOwner"
-                        )
-                        BuyModal(
-                            :ad="ad"
-                        )
+                        addEditAdModal( :ad="ad" v-if="isOwner" )
+                        BuyModal( :ad="ad" )
                 v-card( v-else )
-                    v-skeleton-loader(
-                        type="image, article, actions"
-                    )
+                    v-skeleton-loader( type="image, article, actions" )
 </template>
 
 <script>
